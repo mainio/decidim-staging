@@ -86,7 +86,7 @@ Rails.application.configure do
   # Default URL for mailer (Devise)
   config.action_mailer.default_url_options = {
     protocol: "https",
-    host: "pr8271.decidimqa.mainiotech.fi"
+    host: ENV["HOSTNAME"]
     # from: "no-reply@decidimqa.mainiotech.fi" # Causes forms to break e.g. when publishing proposal
   }
 
@@ -96,12 +96,12 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.action_controller.asset_host = "https://pr8271.decidimqa.mainiotech.fi"
+  config.action_controller.asset_host = "https://#{ENV["HOSTNAME"]}"
 
   # Default URL for application (Devise)
   config.action_controller.default_url_options = {
     # protocol: "https", # Breaks login redirection
-    host: "pr8271.decidimqa.mainiotech.fi",
+    host: ENV["HOSTNAME"],
     port: 443
   }
 
