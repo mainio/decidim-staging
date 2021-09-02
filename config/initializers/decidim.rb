@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 Decidim.configure do |config|
-  config.application_name = "Decidim Codegram Staging"
-  config.mailer_sender = "change-me@domain.org"
+  config.application_name = "Decidim Mainio Staging"
+  config.mailer_sender = "no-reply@decidimqa.mainiotech.fi"
 
   # Change these lines to set your preferred locales
   config.default_locale = :en
@@ -121,15 +121,11 @@ Decidim.configure do |config|
   # Only needed if you want to have Etherpad integration with Decidim. See
   # Decidim docs at docs/services/etherpad.md in order to set it up.
   #
-  config.etherpad = {
-    server: Rails.application.secrets.etherpad[:server],
-    api_key: Rails.application.secrets.etherpad[:api_key],
-    api_version: Rails.application.secrets.etherpad[:api_version]
-  }
-
-  if ENV["HEROKU_APP_NAME"].present?
-    config.base_uploads_path = ENV["HEROKU_APP_NAME"] + "/"
-  end
+  # config.etherpad = {
+  #   server: Rails.application.secrets.etherpad[:server],
+  #   api_key: Rails.application.secrets.etherpad[:api_key],
+  #   api_version: Rails.application.secrets.etherpad[:api_version]
+  # }
 end
 
 Rails.application.config.i18n.available_locales = Decidim.available_locales
