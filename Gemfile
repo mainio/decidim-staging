@@ -33,10 +33,12 @@ group :development do
   gem "web-console"
 end
 
-group :production do
-  gem "fog-aws"
-  gem "lograge"
-  gem "sendgrid-ruby"
-  gem "sentry-ruby"
-  gem "sentry-rails"
+group :production, :staging do
+  gem "dotenv-rails", "~> 2.1", ">= 2.1.1"
+
+  gem "resque", "~> 2.0.0"
+  gem "resque-scheduler", "~> 4.4"
+
+  # Cronjobs
+  gem "whenever", require: false
 end
