@@ -1,7 +1,7 @@
 GIT
-  remote: https://github.com/decidim/decidim
-  revision: 20b6cb42bf0363046b46e2c307817c8aec724e78
-  branch: develop
+  remote: https://github.com/mainio/decidim
+  revision: 333499762d0cb6c8c78f09ece619a81f3c192da9
+  branch: feature/configurable_order_for_proposals
   specs:
     decidim (0.26.0.dev)
       decidim-accountability (= 0.26.0.dev)
@@ -385,7 +385,7 @@ GEM
       tzinfo
     etherpad-lite (0.3.0)
       rest-client (>= 1.6)
-    excon (0.82.0)
+    excon (0.85.0)
     execjs (2.8.1)
     factory_bot (4.11.1)
       activesupport (>= 3.0.0)
@@ -394,19 +394,25 @@ GEM
       railties (>= 3.0.0)
     faker (2.18.0)
       i18n (>= 1.6, < 2)
-    faraday (1.4.2)
+    faraday (1.7.1)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
+      faraday-httpclient (~> 1.0.1)
       faraday-net_http (~> 1.0)
       faraday-net_http_persistent (~> 1.1)
+      faraday-patron (~> 1.0)
+      faraday-rack (~> 1.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords (>= 0.0.4)
     faraday-em_http (1.0.0)
     faraday-em_synchrony (1.0.0)
     faraday-excon (1.1.0)
+    faraday-httpclient (1.0.1)
     faraday-net_http (1.0.1)
-    faraday-net_http_persistent (1.1.0)
+    faraday-net_http_persistent (1.2.0)
+    faraday-patron (1.0.0)
+    faraday-rack (1.0.0)
     faraday_middleware (1.1.0)
       faraday (~> 1.0)
     ffi (1.15.1)
@@ -420,7 +426,7 @@ GEM
       mime-types
     fog-local (0.7.0)
       fog-core (>= 1.27, < 3.0)
-    formatador (0.2.5)
+    formatador (0.3.0)
     foundation_rails_helper (4.0.0)
       actionpack (>= 4.1, < 7.0)
       activemodel (>= 4.1, < 7.0)
@@ -514,7 +520,7 @@ GEM
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2021.0225)
+    mime-types-data (3.2021.0901)
     mini_magick (4.11.0)
     mini_mime (1.1.0)
     mini_portile2 (2.5.3)
@@ -751,7 +757,7 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.1.0)
       tilt (~> 2.0)
-    smart_properties (1.16.0)
+    smart_properties (1.16.2)
     social-share-button (1.2.4)
       coffee-rails
     spring (2.1.1)
