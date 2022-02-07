@@ -33,3 +33,8 @@ end
 every :day, at: "03:05", roles: [:db] do
   rake "decidim_meetings:clean_registration_forms"
 end
+
+# Process reminders
+every :day, at: "04:05", roles: [:db] do
+  rake "decidim:reminders:all"
+end
