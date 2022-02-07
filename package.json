@@ -2,24 +2,14 @@
   "name": "decidim_staging",
   "private": true,
   "dependencies": {
-    "@decidim/all": "file:packages/all",
     "@decidim/browserslist-config": "file:packages/browserslist-config",
     "@decidim/core": "file:packages/core",
     "@decidim/elections": "file:packages/elections",
     "@decidim/webpacker": "file:packages/webpacker"
   },
-  "babel": {
-    "presets": [
-      "./node_modules/@rails/webpacker/package/babel/preset.js"
-    ]
-  },
   "browserslist": [
     "extends @decidim/browserslist-config"
   ],
-  "engines": {
-    "node": "^15.14.0",
-    "npm": "^7.7.6"
-  },
   "devDependencies": {
     "@decidim/dev": "file:packages/dev",
     "@decidim/eslint-config": "file:packages/eslint-config",
