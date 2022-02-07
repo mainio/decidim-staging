@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_29_050520) do
+ActiveRecord::Schema.define(version: 2022_02_07_105317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -351,7 +351,7 @@ ActiveRecord::Schema.define(version: 2021_11_29_050520) do
 
   create_table "decidim_categories", id: :serial, force: :cascade do |t|
     t.jsonb "name", null: false
-    t.jsonb "description", null: false
+    t.jsonb "description"
     t.integer "parent_id"
     t.integer "decidim_participatory_space_id"
     t.string "decidim_participatory_space_type"
@@ -686,6 +686,8 @@ ActiveRecord::Schema.define(version: 2021_11_29_050520) do
     t.integer "weight"
     t.jsonb "images", default: {}
     t.integer "scoped_resource_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["decidim_organization_id", "scope_name", "scoped_resource_id", "manifest_name"], name: "idx_decidim_content_blocks_org_id_scope_scope_id_manifest"
     t.index ["decidim_organization_id"], name: "index_decidim_content_blocks_on_decidim_organization_id"
     t.index ["manifest_name"], name: "index_decidim_content_blocks_on_manifest_name"
@@ -1193,7 +1195,7 @@ ActiveRecord::Schema.define(version: 2021_11_29_050520) do
     t.string "registration_type", default: "registration_disabled", null: false
     t.string "registration_url"
     t.string "salt"
-    t.boolean "customize_registration_email", default: false, null: false
+    t.boolean "customize_registration_email", default: false
     t.jsonb "registration_email_custom_content"
     t.integer "follows_count", default: 0, null: false
     t.datetime "published_at"
@@ -1653,6 +1655,34 @@ ActiveRecord::Schema.define(version: 2021_11_29_050520) do
     t.datetime "updated_at", null: false
     t.index ["decidim_proposal_id"], name: "decidim_proposals_valuation_assignment_proposal"
     t.index ["valuator_role_type", "valuator_role_id"], name: "decidim_proposals_valuation_assignment_valuator_role"
+  end
+
+  create_table "decidim_reminder_deliveries", force: :cascade do |t|
+    t.bigint "decidim_reminder_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["decidim_reminder_id"], name: "index_decidim_reminder_deliveries_on_decidim_reminder_id"
+  end
+
+  create_table "decidim_reminder_records", force: :cascade do |t|
+    t.string "state", default: "active"
+    t.string "string", default: "active"
+    t.bigint "decidim_reminder_id"
+    t.string "remindable_type", null: false
+    t.bigint "remindable_id", null: false
+    t.index ["decidim_reminder_id"], name: "index_decidim_reminder_records_on_decidim_reminder_id"
+    t.index ["remindable_type", "remindable_id"], name: "index_decidim_reminder_records_remindable"
+    t.index ["state"], name: "index_decidim_reminder_records_on_state"
+    t.index ["string"], name: "index_decidim_reminder_records_on_string"
+  end
+
+  create_table "decidim_reminders", force: :cascade do |t|
+    t.bigint "decidim_user_id", null: false
+    t.bigint "decidim_component_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["decidim_component_id"], name: "index_decidim_reminders_on_decidim_component_id"
+    t.index ["decidim_user_id"], name: "index_decidim_reminders_on_decidim_user_id"
   end
 
   create_table "decidim_reports", id: :serial, force: :cascade do |t|
@@ -2180,6 +2210,10 @@ ActiveRecord::Schema.define(version: 2021_11_29_050520) do
   add_foreign_key "decidim_participatory_process_steps", "decidim_participatory_processes"
   add_foreign_key "decidim_participatory_processes", "decidim_organizations"
   add_foreign_key "decidim_participatory_processes", "decidim_scope_types"
+  add_foreign_key "decidim_reminder_deliveries", "decidim_reminders"
+  add_foreign_key "decidim_reminder_records", "decidim_reminders"
+  add_foreign_key "decidim_reminders", "decidim_components"
+  add_foreign_key "decidim_reminders", "decidim_users"
   add_foreign_key "decidim_scope_types", "decidim_organizations"
   add_foreign_key "decidim_scopes", "decidim_organizations"
   add_foreign_key "decidim_scopes", "decidim_scope_types", column: "scope_type_id"
