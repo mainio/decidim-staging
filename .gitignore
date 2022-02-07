@@ -18,6 +18,9 @@
 
 .byebug_history
 
+# Ignore config files
+.rbenv-vars
+
 # Ignore public uploads
 public/uploads
 
