@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/mainio/decidim
-  revision: ab136a64bcd243b81b988abd0db8ccca4f4423d7
+  revision: c6b0b6f256c1382309852f38b0155d784288d9dd
   branch: feature/dynamical_attachment_uploads
   specs:
     decidim (0.27.0.dev)
@@ -302,7 +302,7 @@ GEM
       actionpack (>= 5.0)
       cells (>= 4.1.6, < 5.0.0)
     charlock_holmes (0.7.7)
-    chef-utils (17.9.42)
+    chef-utils (17.9.46)
       concurrent-ruby
     childprocess (3.0.0)
     chronic (0.10.2)
@@ -443,7 +443,7 @@ GEM
       faraday (>= 1.0)
       faraday_middleware
       graphql-client
-    graphql (1.12.23)
+    graphql (1.12.24)
     graphql-client (0.17.0)
       activesupport (>= 3.0)
       graphql (~> 1.10)
@@ -576,7 +576,7 @@ GEM
     omniauth-oauth2 (1.7.2)
       oauth2 (~> 1.4)
       omniauth (>= 1.9, < 3)
-    omniauth-rails_csrf_protection (1.0.0)
+    omniauth-rails_csrf_protection (1.0.1)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
     omniauth-twitter (1.4.0)
@@ -688,24 +688,24 @@ GEM
       resque (>= 1.27)
       rufus-scheduler (~> 3.2, < 3.7)
     rexml (3.2.5)
-    rspec (3.10.0)
-      rspec-core (~> 3.10.0)
-      rspec-expectations (~> 3.10.0)
-      rspec-mocks (~> 3.10.0)
+    rspec (3.11.0)
+      rspec-core (~> 3.11.0)
+      rspec-expectations (~> 3.11.0)
+      rspec-mocks (~> 3.11.0)
     rspec-cells (0.3.7)
       cells (>= 4.0.0, < 6.0.0)
       rspec-rails (< 6.0)
-    rspec-core (3.10.2)
-      rspec-support (~> 3.10.0)
-    rspec-expectations (3.10.2)
+    rspec-core (3.11.0)
+      rspec-support (~> 3.11.0)
+    rspec-expectations (3.11.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.10.0)
+      rspec-support (~> 3.11.0)
     rspec-html-matchers (0.9.4)
       nokogiri (~> 1)
       rspec (>= 3.0.0.a, < 4)
-    rspec-mocks (3.10.3)
+    rspec-mocks (3.11.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.10.0)
+      rspec-support (~> 3.11.0)
     rspec-rails (4.1.2)
       actionpack (>= 4.2)
       activesupport (>= 4.2)
@@ -716,7 +716,7 @@ GEM
       rspec-support (~> 3.10)
     rspec-retry (0.6.2)
       rspec-core (> 3.3)
-    rspec-support (3.10.3)
+    rspec-support (3.11.0)
     rspec_junit_formatter (0.3.0)
       rspec-core (>= 2, < 4, != 2.12.0)
     rubocop (0.92.0)
