@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/mainio/decidim
-  revision: c6b0b6f256c1382309852f38b0155d784288d9dd
+  revision: dd133eb4e06b4d9f1a37cac6e03daa12ff63f008
   branch: feature/dynamical_attachment_uploads
   specs:
     decidim (0.27.0.dev)
