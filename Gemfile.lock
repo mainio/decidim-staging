@@ -1,7 +1,7 @@
 GIT
-  remote: https://github.com/decidim/decidim
-  revision: 02749b7694a6c10e1523b2c598a89e93750011dc
-  branch: develop
+  remote: https://github.com/mainio/decidim
+  revision: 831a39cd7d1834136b424888f27246b80439190b
+  branch: feature/bulk_actions_for_projects
   specs:
     decidim (0.27.0.dev)
       decidim-accountability (= 0.27.0.dev)
