@@ -1,24 +1,36 @@
 <div class="content"><h1>
-<a id="postconnection" class="anchor" href="#postconnection" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PostConnection</h1>
-<p>The connection type for Post.</p>
+<a id="participatoryprocesstype" class="anchor" href="#participatoryprocesstype" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ParticipatoryProcessType</h1>
+<p>A participatory process type</p>
 <h2>
 <a id="fields" class="anchor" href="#fields" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fields</h2>
 <div class="field-entry ">
-  <span id="pageinfo" class="field-name anchored">pageInfo (<code><a href="/api/docs/object/pageinfo">PageInfo!</a></code>)</span>
+  <span id="id" class="field-name anchored">id (<code><a href="/api/docs/scalar/id">ID!</a></code>)</span>
   <div class="description-wrapper">
-   <p>Information to aid in pagination.</p>
+   <p>Unique ID of this participatory process type</p>
   </div>
 </div>
 <div class="field-entry ">
-  <span id="edges" class="field-name anchored">edges (<code><a href="/api/docs/object/postedge">[PostEdge]</a></code>)</span>
+  <span id="title" class="field-name anchored">title (<code><a href="/api/docs/object/translatedfield">TranslatedField</a></code>)</span>
   <div class="description-wrapper">
-   <p>A list of edges.</p>
+   <p>The title of this participatory process type</p>
   </div>
 </div>
 <div class="field-entry ">
-  <span id="nodes" class="field-name anchored">nodes (<code><a href="/api/docs/object/post">[Post]</a></code>)</span>
+  <span id="createdat" class="field-name anchored">createdAt (<code><a href="/api/docs/scalar/datetime">DateTime!</a></code>)</span>
   <div class="description-wrapper">
-   <p>A list of nodes.</p>
+   <p>The time this participatory process type was created</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="updatedat" class="field-name anchored">updatedAt (<code><a href="/api/docs/scalar/datetime">DateTime!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The time this participatory process type was updated</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="processes" class="field-name anchored">processes (<code><a href="/api/docs/object/participatoryprocess">[ParticipatoryProcess]!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>Lists all the participatory processes belonging to this type</p>
   </div>
 </div></div>
 <div id="sidebar"><ul class="categories">
