@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable all
 source "https://rubygems.org"
 
 ruby RUBY_VERSION
