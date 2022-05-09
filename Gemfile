@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { git: "https://github.com/decidim/decidim", branch: "develop" }
+DECIDIM_VERSION = { git: "https://github.com/mainio/decidim", branch: "feature/cookie-settings" }
 
 gem "decidim", DECIDIM_VERSION
 #gem "decidim-conferences", DECIDIM_VERSION
@@ -31,7 +31,7 @@ end
 group :development do
   gem "decidim-dev", DECIDIM_VERSION
   gem "letter_opener_web", "~> 1.4.0"
-  gem "listen", "~> 3.1.0"
+  gem "listen", "~> 3.1"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console"
