@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/mainio/decidim
-  revision: 10091d3056434b92f703c7611ffd4f3f98738339
+  revision: 9ec7393a2e100ab81591920b440b9730c0b5fd84
   branch: feature/cookie-settings
   specs:
     decidim (0.27.0.dev)
@@ -523,7 +523,6 @@ GEM
     mime-types-data (3.2022.0105)
     mini_magick (4.11.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.0)
     minitest (5.15.0)
     mixlib-cli (2.1.8)
     mixlib-config (3.0.9)
@@ -535,8 +534,7 @@ GEM
     multipart-post (2.1.1)
     mustache (1.1.1)
     nio4r (2.5.8)
-    nokogiri (1.13.6)
-      mini_portile2 (~> 2.8.0)
+    nokogiri (1.13.6-x86_64-linux)
       racc (~> 1.4)
     oauth (0.5.10)
     oauth2 (1.4.9)
@@ -803,7 +801,7 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
   byebug
@@ -823,3 +821,6 @@ DEPENDENCIES
 
 RUBY VERSION
    ruby 3.0.2p107
+
+BUNDLED WITH
+   2.3.5
