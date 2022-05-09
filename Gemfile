@@ -38,11 +38,12 @@ group :development do
 end
 
 group :production, :staging do
-  gem "dotenv-rails", "~> 2.1", ">= 2.1.1"
+  # gem "dotenv-rails", "~> 2.1", ">= 2.1.1"
 
-  gem "resque", "~> 2.0.0"
-  gem "resque-scheduler", "~> 4.4"
+  # gem "resque", "~> 2.0.0"
+  # gem "resque-scheduler", "~> 4.4"
 
-  # Cronjobs
-  gem "whenever", require: false
+  # # Cronjobs
+  # gem "whenever", require: false
+  gem 'sidekiq'
 end
