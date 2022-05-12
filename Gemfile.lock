@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/mainio/decidim
-  revision: b636a9463ca05694e64a67255ca0a988ba449bf7
+  revision: b8629bc3494ab2c797e4909be106536d97f9b258
   branch: feature/cookie-settings
   specs:
     decidim (0.27.0.dev)
@@ -299,7 +299,7 @@ GEM
     cells-erb (0.1.0)
       cells (~> 4.0)
       erbse (>= 0.1.1)
-    cells-rails (0.1.4)
+    cells-rails (0.1.5)
       actionpack (>= 5.0)
       cells (>= 4.1.6, < 5.0.0)
     charlock_holmes (0.7.7)
