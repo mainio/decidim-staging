@@ -2,15 +2,15 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# This file is the source Rails uses to define your schema when running `rails
-# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
 # be faster and is potentially less error prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_10_141557) do
+ActiveRecord::Schema.define(version: 2022_05_16_120649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -35,7 +35,14 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
     t.datetime "created_at", null: false
+    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "decidim_accountability_results", id: :serial, force: :cascade do |t|
@@ -79,6 +86,7 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
     t.integer "decidim_accountability_result_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "title"
     t.index ["decidim_accountability_result_id"], name: "index_decidim_accountability_timeline_entries_on_results_id"
     t.index ["entry_date"], name: "index_decidim_accountability_timeline_entries_on_entry_date"
   end
@@ -1971,6 +1979,7 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
     t.integer "block_id"
     t.boolean "email_on_moderations", default: true
     t.integer "follows_count", default: 0, null: false
+    t.jsonb "notification_settings", default: {}
     t.index ["confirmation_token"], name: "index_decidim_users_on_confirmation_token", unique: true
     t.index ["decidim_organization_id"], name: "index_decidim_users_on_decidim_organization_id"
     t.index ["email", "decidim_organization_id"], name: "index_decidim_users_on_email_and_decidim_organization_id", unique: true, where: "((deleted_at IS NULL) AND (managed = false) AND ((type)::text = 'Decidim::User'::text))"
@@ -2130,6 +2139,7 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
     t.string "voting_type", default: "online"
     t.integer "follows_count", default: 0, null: false
     t.string "census_contact_information"
+    t.boolean "show_check_census", default: true
     t.index ["decidim_organization_id"], name: "index_decidim_votings_votings_on_decidim_organization_id"
     t.index ["decidim_scope_id"], name: "index_decidim_votings_votings_on_decidim_scope_id"
     t.index ["slug"], name: "index_decidim_votings_votings_on_slug"
@@ -2196,6 +2206,7 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "decidim_area_types", "decidim_organizations"
   add_foreign_key "decidim_areas", "decidim_area_types", column: "area_type_id"
   add_foreign_key "decidim_areas", "decidim_organizations"
