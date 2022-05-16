@@ -31,7 +31,7 @@ end
 group :development do
   gem "decidim-dev", DECIDIM_VERSION
   gem "letter_opener_web", "~> 1.4.0"
-  gem "listen", "~> 3.1.0"
+  gem "listen", "~> 3.7.1"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console"
