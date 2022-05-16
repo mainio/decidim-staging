@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source "https://rubygems.org"
-# empty comment
+# #empty comment
 ruby RUBY_VERSION
 
 DECIDIM_VERSION = { git: "https://github.com/mainio/decidim", branch: "feature/cookie-settings" }
