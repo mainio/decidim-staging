@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/mainio/decidim
-  revision: 08b12c32a71bd7e3fc9b8a33d6bc1c4fafb40e44
+  revision: 3d1753dc2fb94faa15a216c60bc8fb06482c0a99
   branch: feature/cookie-settings
   specs:
     decidim (0.27.0.dev)
@@ -261,7 +261,7 @@ GEM
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
     batch-loader (1.5.0)
-    bcrypt (3.1.17)
+    bcrypt (3.1.18)
     better_html (1.0.16)
       actionview (>= 4.0)
       activesupport (>= 4.0)
@@ -476,7 +476,7 @@ GEM
       ruby-vips (>= 2.0.17, < 3)
     invisible_captcha (0.13.0)
       rails (>= 3.2.0)
-    json (2.6.1)
+    json (2.6.2)
     jwt (2.2.3)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -693,7 +693,7 @@ GEM
       rubocop-ast (>= 1.17.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.17.0)
+    rubocop-ast (1.18.0)
       parser (>= 3.1.1.0)
     rubocop-rails (2.14.2)
       activesupport (>= 4.2.0)
@@ -705,7 +705,7 @@ GEM
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
-    rubyXL (3.4.23)
+    rubyXL (3.4.24)
       nokogiri (>= 1.10.8)
       rubyzip (>= 1.3.0)
     rubyzip (2.3.2)
