@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/mainio/decidim
-  revision: 748be99acc44d532236123e09cfb8c0896464a2d
+  revision: 20b8431a1f144d3448afbcf08df73ec79994475c
   branch: feature/cookie-settings
   specs:
     decidim (0.27.0.dev)
