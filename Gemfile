@@ -15,6 +15,9 @@ gem "decidim-elections", DECIDIM_VERSION
 
 #gem "webpacker", "6.0.0.rc.5"
 
+# Required with Ruby 3.1.1
+gem "stringio", "3.0.1"
+
 gem "wicked_pdf"
 gem "wkhtmltopdf-binary"
 
