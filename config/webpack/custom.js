@@ -6,13 +6,13 @@ const { config } = require("@rails/webpacker");
 module.exports = {
   module: {
     rules: [
-      {
-        test: require.resolve("quill"),
-        loader: "expose-loader",
-        options: {
-          exposes: ["Quill"]
-        }
-      },
+      // {
+      //   test: require.resolve("quill"),
+      //   loader: "expose-loader",
+      //   options: {
+      //     exposes: ["Quill"]
+      //   }
+      // },
       {
         test: require.resolve("jquery"),
         loader: "expose-loader",
