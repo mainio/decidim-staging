@@ -1,7 +1,7 @@
 GIT
-  remote: https://github.com/decidim/decidim
-  revision: d42e42ab5615b19c52944f6248e81168c3d74d10
-  branch: develop
+  remote: https://github.com/mainio/decidim.git
+  revision: c060f61b04ab5d4d6ae74b9fd393fc1ea0d01b62
+  branch: feature/tiptap-editor
   specs:
     decidim (0.28.0.dev)
       decidim-accountability (= 0.28.0.dev)
