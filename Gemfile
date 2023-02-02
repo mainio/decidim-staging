@@ -40,6 +40,7 @@ end
 
 group :production, :staging do
   gem "dotenv-rails", "~> 2.1", ">= 2.1.1"
+  gem "letter_opener_web", "~> 1.4.0"
 
   gem "resque", "~> 2.0.0"
   gem "resque-scheduler", "~> 4.4"
