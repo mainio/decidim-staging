@@ -25,13 +25,15 @@ gem "faker", "~> 2.14"
 
 gem "puma"
 
+gem "letter_opener_web", "~> 1.4.0"
+gem "rexml", "~> 3.2.5"
+
 group :development, :test do
   gem "byebug", platform: :mri
 end
 
 group :development do
   gem "decidim-dev", DECIDIM_VERSION
-  gem "letter_opener_web", "~> 1.4.0"
   gem "listen", "~> 3.7.1"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
@@ -40,7 +42,6 @@ end
 
 group :production, :staging do
   gem "dotenv-rails", "~> 2.1", ">= 2.1.1"
-  gem "letter_opener_web", "~> 1.4.0"
 
   gem "resque", "~> 2.0.0"
   gem "resque-scheduler", "~> 4.4"
