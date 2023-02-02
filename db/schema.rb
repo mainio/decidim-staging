@@ -2,15 +2,15 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# This file is the source Rails uses to define your schema when running `rails
-# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
 # be faster and is potentially less error prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_10_141557) do
+ActiveRecord::Schema.define(version: 2023_02_02_145849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -35,7 +35,14 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
     t.datetime "created_at", null: false
+    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "decidim_accountability_results", id: :serial, force: :cascade do |t|
@@ -79,6 +86,7 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
     t.integer "decidim_accountability_result_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "title"
     t.index ["decidim_accountability_result_id"], name: "index_decidim_accountability_timeline_entries_on_results_id"
     t.index ["entry_date"], name: "index_decidim_accountability_timeline_entries_on_entry_date"
   end
@@ -270,6 +278,25 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
     t.index ["attachment_collection_id"], name: "index_decidim_attachments_on_attachment_collection_id"
   end
 
+  create_table "decidim_authorization_transfer_records", force: :cascade do |t|
+    t.bigint "transfer_id", null: false
+    t.string "resource_type", null: false
+    t.bigint "resource_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["resource_type", "resource_id"], name: "index_decidim_authorization_transfer_records_on_resource"
+    t.index ["transfer_id"], name: "index_decidim_authorization_transfer_records_on_transfer_id"
+  end
+
+  create_table "decidim_authorization_transfers", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "source_user_id", null: false
+    t.bigint "authorization_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["authorization_id"], name: "index_decidim_authorization_transfers_on_authorization_id"
+    t.index ["source_user_id"], name: "index_decidim_authorization_transfers_on_source_user_id"
+    t.index ["user_id"], name: "index_decidim_authorization_transfers_on_user_id"
+  end
+
   create_table "decidim_authorizations", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.jsonb "metadata"
@@ -297,6 +324,7 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
     t.integer "endorsements_count", default: 0, null: false
     t.integer "comments_count", default: 0, null: false
     t.integer "follows_count", default: 0, null: false
+    t.datetime "published_at"
     t.index ["decidim_author_id", "decidim_author_type"], name: "index_decidim_blogs_posts_on_decidim_author"
     t.index ["decidim_component_id"], name: "index_decidim_blogs_posts_on_decidim_component_id"
     t.index ["decidim_user_group_id"], name: "index_decidim_blogs_posts_on_decidim_user_group_id"
@@ -345,6 +373,9 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
     t.date "selected_at"
     t.integer "comments_count", default: 0, null: false
     t.integer "follows_count", default: 0, null: false
+    t.text "address"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["decidim_budgets_budget_id"], name: "index_decidim_budgets_projects_on_decidim_budgets_budget_id"
     t.index ["decidim_scope_id"], name: "index_decidim_budgets_projects_on_decidim_scope_id"
   end
@@ -797,7 +828,6 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
   create_table "decidim_elections_questions", force: :cascade do |t|
     t.bigint "decidim_elections_election_id", null: false
     t.jsonb "title", null: false
-    t.jsonb "description"
     t.integer "max_selections", default: 1, null: false
     t.integer "weight", default: 0, null: false
     t.boolean "random_answers_order", default: true, null: false
@@ -1454,8 +1484,8 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
   create_table "decidim_participatory_process_steps", id: :serial, force: :cascade do |t|
     t.jsonb "title", null: false
     t.jsonb "description"
-    t.date "start_date"
-    t.date "end_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.integer "decidim_participatory_process_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -1788,6 +1818,23 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
     t.index ["token_for_type", "token_for_id"], name: "decidim_share_tokens_token_for"
   end
 
+  create_table "decidim_short_links", force: :cascade do |t|
+    t.bigint "decidim_organization_id", null: false
+    t.string "target_type", null: false
+    t.bigint "target_id", null: false
+    t.string "identifier", limit: 10, null: false
+    t.string "mounted_engine_name"
+    t.string "route_name"
+    t.jsonb "params"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["decidim_organization_id", "identifier"], name: "idx_decidim_short_links_organization_id_identifier", unique: true
+    t.index ["decidim_organization_id"], name: "index_decidim_short_links_on_decidim_organization_id"
+    t.index ["mounted_engine_name"], name: "index_decidim_short_links_on_mounted_engine_name"
+    t.index ["route_name"], name: "index_decidim_short_links_on_route_name"
+    t.index ["target_type", "target_id"], name: "index_decidim_short_links_on_target"
+  end
+
   create_table "decidim_sortitions_sortitions", force: :cascade do |t|
     t.bigint "decidim_component_id"
     t.integer "decidim_proposals_component_id"
@@ -1869,6 +1916,8 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
     t.jsonb "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "field_values", default: {}
+    t.string "target"
     t.index ["decidim_organization_id"], name: "index_decidim_templates_organization"
     t.index ["templatable_type", "templatable_id"], name: "index_decidim_templates_templatable"
   end
@@ -1946,7 +1995,6 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
     t.boolean "admin", default: false, null: false
     t.boolean "managed", default: false, null: false
     t.string "roles", default: [], array: true
-    t.boolean "email_on_notification", default: false, null: false
     t.string "nickname", limit: 20, default: "", null: false
     t.string "personal_url"
     t.text "about"
@@ -1971,6 +2019,11 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
     t.integer "block_id"
     t.boolean "email_on_moderations", default: true
     t.integer "follows_count", default: 0, null: false
+    t.jsonb "notification_settings", default: {}
+    t.string "notifications_sending_frequency", default: "daily"
+    t.datetime "digest_sent_at"
+    t.datetime "password_updated_at"
+    t.string "previous_passwords", default: [], array: true
     t.index ["confirmation_token"], name: "index_decidim_users_on_confirmation_token", unique: true
     t.index ["decidim_organization_id"], name: "index_decidim_users_on_decidim_organization_id"
     t.index ["email", "decidim_organization_id"], name: "index_decidim_users_on_email_and_decidim_organization_id", unique: true, where: "((deleted_at IS NULL) AND (managed = false) AND ((type)::text = 'Decidim::User'::text))"
@@ -1980,6 +2033,7 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
     t.index ["invited_by_id", "invited_by_type"], name: "index_decidim_users_on_invited_by_id_and_invited_by_type"
     t.index ["invited_by_id"], name: "index_decidim_users_on_invited_by_id"
     t.index ["nickname", "decidim_organization_id"], name: "index_decidim_users_on_nickame_and_decidim_organization_id", unique: true, where: "((deleted_at IS NULL) AND (managed = false))"
+    t.index ["notifications_sending_frequency"], name: "index_decidim_users_on_notifications_sending_frequency"
     t.index ["officialized_at"], name: "index_decidim_users_on_officialized_at"
     t.index ["reset_password_token"], name: "index_decidim_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_decidim_users_on_unlock_token", unique: true
@@ -2042,7 +2096,7 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
   end
 
   create_table "decidim_votings_census_datasets", force: :cascade do |t|
-    t.string "file"
+    t.string "filename"
     t.integer "status", null: false
     t.integer "data_count"
     t.integer "csv_row_raw_count", null: false
@@ -2130,6 +2184,7 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
     t.string "voting_type", default: "online"
     t.integer "follows_count", default: 0, null: false
     t.string "census_contact_information"
+    t.boolean "show_check_census", default: true
     t.index ["decidim_organization_id"], name: "index_decidim_votings_votings_on_decidim_organization_id"
     t.index ["decidim_scope_id"], name: "index_decidim_votings_votings_on_decidim_scope_id"
     t.index ["slug"], name: "index_decidim_votings_votings_on_slug"
@@ -2196,12 +2251,17 @@ ActiveRecord::Schema.define(version: 2022_03_10_141557) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "decidim_area_types", "decidim_organizations"
   add_foreign_key "decidim_areas", "decidim_area_types", column: "area_type_id"
   add_foreign_key "decidim_areas", "decidim_organizations"
   add_foreign_key "decidim_assemblies", "decidim_assemblies_types"
   add_foreign_key "decidim_assemblies_settings", "decidim_organizations"
   add_foreign_key "decidim_attachments", "decidim_attachment_collections", column: "attachment_collection_id", name: "fk_decidim_attachments_attachment_collection_id", on_delete: :nullify
+  add_foreign_key "decidim_authorization_transfer_records", "decidim_authorization_transfers", column: "transfer_id"
+  add_foreign_key "decidim_authorization_transfers", "decidim_authorizations", column: "authorization_id"
+  add_foreign_key "decidim_authorization_transfers", "decidim_users", column: "source_user_id"
+  add_foreign_key "decidim_authorization_transfers", "decidim_users", column: "user_id"
   add_foreign_key "decidim_authorizations", "decidim_users"
   add_foreign_key "decidim_budgets_budgets", "decidim_scopes"
   add_foreign_key "decidim_budgets_orders", "decidim_budgets_budgets"

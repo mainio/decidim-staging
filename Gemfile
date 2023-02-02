@@ -15,8 +15,6 @@ gem "decidim-elections", DECIDIM_VERSION
 
 #gem "webpacker", "6.0.0.rc.5"
 
-gem "webpush", "~> 1.1"
-
 gem "wicked_pdf"
 gem "wkhtmltopdf-binary"
 
