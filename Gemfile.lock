@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/mainio/decidim.git
-  revision: c5d5da43e53a730350ce0f76859ab6f1130c02c8
+  revision: 412395d94130ee101312ff9617c276bbbd26408e
   branch: feature/tiptap-editor
   specs:
     decidim (0.28.0.dev)
@@ -643,7 +643,7 @@ GEM
     redis (4.8.0)
     redis-namespace (1.10.0)
       redis (>= 4)
-    regexp_parser (2.6.2)
+    regexp_parser (2.7.0)
     request_store (1.5.1)
       rack (>= 1.4)
     responders (3.1.0)
