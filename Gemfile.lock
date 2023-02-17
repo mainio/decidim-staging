@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/mainio/decidim.git
-  revision: c3b33b728d686f319d91be2ad59b00139b912377
+  revision: a8f07c046a43f37a36df405f6258766896dd9ba5
   branch: feature/tiptap-editor
   specs:
     decidim (0.28.0.dev)
@@ -318,7 +318,7 @@ GEM
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
     declarative-option (0.1.0)
-    devise (4.8.1)
+    devise (4.9.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
