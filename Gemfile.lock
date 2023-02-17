@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/mainio/decidim.git
-  revision: bdf129d533a2c8981a45873b7c619dac61eb069d
+  revision: c3b33b728d686f319d91be2ad59b00139b912377
   branch: feature/tiptap-editor
   specs:
     decidim (0.28.0.dev)
