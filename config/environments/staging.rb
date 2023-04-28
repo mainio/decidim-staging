@@ -118,4 +118,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # See https://github.com/decidim/decidim/issues/10609
+  config.global_id.expires_in = 100.years
 end

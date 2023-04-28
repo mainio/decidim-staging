@@ -119,4 +119,7 @@ Rails.application.configure do
       referer: event.payload[:referer],
     }
   end
+
+  # See https://github.com/decidim/decidim/issues/10609
+  config.global_id.expires_in = 100.years
 end
