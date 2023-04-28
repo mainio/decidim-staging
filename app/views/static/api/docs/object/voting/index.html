@@ -10,6 +10,47 @@
 <h2>
 <a id="fields" class="anchor" href="#fields" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fields</h2>
 <div class="field-entry ">
+  <span id="slug" class="field-name anchored">slug (<code><a href="/api/docs/scalar/string">String!</a></code>)</span>
+  <div class="description-wrapper">
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="description" class="field-name anchored">description (<code><a href="/api/docs/object/translatedfield">TranslatedField</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The description of this voting space.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="starttime" class="field-name anchored">startTime (<code><a href="/api/docs/scalar/datetime">DateTime!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The start time for this voting space.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="endtime" class="field-name anchored">endTime (<code><a href="/api/docs/scalar/datetime">DateTime!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The end time for this voting space</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="createdat" class="field-name anchored">createdAt (<code><a href="/api/docs/scalar/datetime">DateTime!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The time this voting was created</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="updatedat" class="field-name anchored">updatedAt (<code><a href="/api/docs/scalar/datetime">DateTime!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The time this voting was updated</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="scope" class="field-name anchored">scope (<code><a href="/api/docs/object/scope">Scope</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The object's scope</p>
+  </div>
+</div>
+<div class="field-entry ">
   <span id="id" class="field-name anchored">id (<code><a href="/api/docs/scalar/id">ID!</a></code>)</span>
   <div class="description-wrapper">
    <p>The participatory space's unique ID</p>
@@ -71,47 +112,6 @@
 <div class="field-entry ">
   <span id="stats" class="field-name anchored">stats (<code><a href="/api/docs/object/statistic">[Statistic]</a></code>)</span>
   <div class="description-wrapper">
-  </div>
-</div>
-<div class="field-entry ">
-  <span id="scope" class="field-name anchored">scope (<code><a href="/api/docs/object/scope">Scope</a></code>)</span>
-  <div class="description-wrapper">
-   <p>The object's scope</p>
-  </div>
-</div>
-<div class="field-entry ">
-  <span id="slug" class="field-name anchored">slug (<code><a href="/api/docs/scalar/string">String!</a></code>)</span>
-  <div class="description-wrapper">
-  </div>
-</div>
-<div class="field-entry ">
-  <span id="description" class="field-name anchored">description (<code><a href="/api/docs/object/translatedfield">TranslatedField</a></code>)</span>
-  <div class="description-wrapper">
-   <p>The description of this voting space.</p>
-  </div>
-</div>
-<div class="field-entry ">
-  <span id="starttime" class="field-name anchored">startTime (<code><a href="/api/docs/scalar/datetime">DateTime!</a></code>)</span>
-  <div class="description-wrapper">
-   <p>The start time for this voting space.</p>
-  </div>
-</div>
-<div class="field-entry ">
-  <span id="endtime" class="field-name anchored">endTime (<code><a href="/api/docs/scalar/datetime">DateTime!</a></code>)</span>
-  <div class="description-wrapper">
-   <p>The end time for this voting space</p>
-  </div>
-</div>
-<div class="field-entry ">
-  <span id="createdat" class="field-name anchored">createdAt (<code><a href="/api/docs/scalar/datetime">DateTime!</a></code>)</span>
-  <div class="description-wrapper">
-   <p>The time this voting was created</p>
-  </div>
-</div>
-<div class="field-entry ">
-  <span id="updatedat" class="field-name anchored">updatedAt (<code><a href="/api/docs/scalar/datetime">DateTime!</a></code>)</span>
-  <div class="description-wrapper">
-   <p>The time this voting was updated</p>
   </div>
 </div></div>
 <div id="sidebar"><ul class="categories">
@@ -1175,6 +1175,13 @@
       <li>
         <a href="/api/docs/directive/include/" class="sidebar-link">
           include
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/api/docs/directive/oneof/" class="sidebar-link">
+          oneOf
         </a>
       </li>
       

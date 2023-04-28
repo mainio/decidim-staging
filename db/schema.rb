@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_02_145849) do
+ActiveRecord::Schema.define(version: 2023_04_28_125756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -1442,7 +1442,7 @@ ActiveRecord::Schema.define(version: 2023_02_02_145849) do
     t.boolean "force_users_to_authenticate_before_access_organization", default: false
     t.jsonb "omniauth_settings"
     t.boolean "rich_text_editor_in_public_views", default: false
-    t.jsonb "admin_terms_of_use_body"
+    t.jsonb "admin_terms_of_service_body"
     t.string "time_zone", limit: 255, default: "UTC"
     t.boolean "enable_machine_translations", default: false
     t.integer "comments_max_length", default: 1000

@@ -99,8 +99,8 @@ https://www.decidim.barcelona/api/
 <p>The types used to filter participatory spaces are: <a href="#ParticipatoryProcessFilter">ParticipatoryProcessFilter</a>, <a href="#AssemblyFilter">AssemblyFilter</a>, <a href="#ConsultationFilter">ConsultationFilter</a> and so on.</p>
 <p>Other collections (or connections) may have their own filters (i.e. <a href="#ComponentFilter">ComponentFilter</a>).</p>
 <p>Each filter has its own properties, you should check any object in particular for details. The way they work with multi-languages fields, however, is the same:</p>
-<p>Let's say we have some searchable object with a multi-language field called <em>title</em>, and we have a filter that allows us to search through this field. How should it work? Should we look up content for every language in the field? or should we stick to a specific language?</p>
-<p>In our case, we've decided to search only one particular language of a multi-language field but we let you choose which language to search.
+<p>We can say we have some searchable object with a multi-language field called <em>title</em>, and we have a filter that allows us to search through this field. How should it work? Should we look up content for every language in the field? or should we stick to a specific language?</p>
+<p>In our case, we have decided to search only one particular language of a multi-language field but we let you choose which language to search.
 If no language is specified, the configured as default in the organization will be used. The keyword to specify the language is <code>locale</code>, and it should be provided in the 2 letters ISO 639-1 format (en = English, es = Spanish, ...).</p>
 <p>Example (this is not a real Decidim query):</p>
 <pre lang="graphql"><code> some_collection(filter: { locale: "en", title: "ideas"}) {
@@ -144,7 +144,7 @@ If no language is specified, the configured as default in the organization will 
 }
 </code></pre>
 <h4>
-<a id="whats-different" class="anchor" href="#whats-different" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What's different?</h4>
+<a id="what-is-different" class="anchor" href="#what-is-different" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is different?</h4>
 <p>First, note that we are querying, in singular, the type <code>participatoryProcess</code>, with a different parameter, <code>slug</code>*, (a String). We can use the <code>id</code> instead if we know it.</p>
 <p>Second, the response is not an Array, it is just the object we requested. We can expect to return <code>null</code> if the object is not found.</p>
 <blockquote>
@@ -284,8 +284,8 @@ If no language is specified, the configured as default in the organization will 
 <p>Many relationships between tables in Decidim are polymorphic, this means that the related object can belong to different classes and share just a few properties in common.</p>
 <p>For instance, components in a participatory space are polymorphic, while the concept of component is generic and all of them share properties like <em>published date</em>, <em>name</em> or <em>weight</em>, they differ in the rest. <em>Proposals</em> have the <em>status</em> field while <em>Meetings</em> have an <em>agenda</em>.</p>
 <p>Another example are the case of linked resources, these are properties that may link objects of different nature between components or participatory spaces.</p>
-<p>In a very simplified way (to know more please refer to the official guide), GraphQL polymorphism is handled through the operator <code>... on</code>. You'll know when a field is polymorphic because the property <code>__typename</code>, which tells you the type of that particular object, will change accordingly.</p>
-<p>In the previous examples we've queried for this property:</p>
+<p>In a very simplified way (to know more please refer to the official guide), GraphQL polymorphism is handled through the operator <code>... on</code>. You will know when a field is polymorphic because the property <code>__typename</code>, which tells you the type of that particular object, will change accordingly.</p>
+<p>In the previous examples we have queried for this property:</p>
 <p>Response fragment:</p>
 <pre lang="json"><code>      "components": [
         {
@@ -403,8 +403,8 @@ If no language is specified, the configured as default in the organization will 
 }
 </code></pre>
 <h4>
-<a id="whats-going-on" class="anchor" href="#whats-going-on" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What's going on?</h4>
-<p>Until the <code>... on Proposals</code> line, there's nothing new. We are requesting the <em>Assembly</em> participatory space identified by the <code>id=3</code>, then listing all its components with the type "Proposals". All the components share the <em>id</em> and <em>name</em> properties, so we can just add them at the query.</p>
+<a id="what-is-going-on" class="anchor" href="#what-is-going-on" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is going on?</h4>
+<p>Until the <code>... on Proposals</code> line, there is nothing new. We are requesting the <em>Assembly</em> participatory space identified by the <code>id=3</code>, then listing all its components with the type "Proposals". All the components share the <em>id</em> and <em>name</em> properties, so we can just add them at the query.</p>
 <p>After that, we want content specific from the <em>Proposals</em> type. In order to do that we must tell the server that the content we will request shall only be executed if the types matches <em>Proposals</em>. We do that by wrapping the rest of the query in the <code>... on Proposals</code> clause.</p>
 <p>The next line is just a property of the type <em>Proposals</em> which is a type of collection called a "connection". A connection works similar as normal collection (such as <em>components</em>) but it can handle more complex cases.</p>
 <p>Typically, a connection is used to paginate long results, for this purpose the results are not directly available but encapsulated inside the list <em>edges</em> in several <em>node</em> results. Also there are more arguments available in order to navigate between pages. This are the arguments:</p>
@@ -1559,6 +1559,13 @@ If no language is specified, the configured as default in the organization will 
       <li>
         <a href="/api/docs/directive/include/" class="sidebar-link">
           include
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="/api/docs/directive/oneof/" class="sidebar-link">
+          oneOf
         </a>
       </li>
       
