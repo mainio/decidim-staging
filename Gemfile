@@ -49,3 +49,6 @@ group :production, :staging do
   # Cronjobs
   gem "whenever", require: false
 end
+
+# Use Redis for Action Cable
+gem 'redis', '~> 4.0'

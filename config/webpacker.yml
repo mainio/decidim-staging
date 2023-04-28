@@ -33,7 +33,7 @@ development:
     hmr: false
     client:
       # Should we show a full-screen overlay in the browser when there are compiler errors or warnings?
-      overlay: true
+      overlay: false
       # May also be a string
       # webSocketURL:
       #  hostname: "0.0.0.0"
@@ -55,7 +55,7 @@ test:
   compile: true
   public_output_path: packs-test
 
-production:
+staging:
   <<: *default
 
   # Production depends on precompilation of packs prior to booting for performance.
@@ -64,7 +64,7 @@ production:
   # Cache manifest.json for performance
   cache_manifest: true
 
-staging:
+production:
   <<: *default
 
   # Production depends on precompilation of packs prior to booting for performance.
